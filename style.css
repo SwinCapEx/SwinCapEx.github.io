@@ -61,16 +61,13 @@ body {
 
 
  @media screen and (max-width: 800px) {
-      html {
-        font-size: 14px; /* Set a base font size for the root element */
-      }
       p {
-        font-size: 3em; /* Body text will be 14px */
+        font-size: 3rem; /* Body text will be 14px */
       }
       h1 {
-        font-size: 2em; /* H1 will be 2.5 times the root font size */
+        font-size: 2rem; /* H1 will be 2.5 times the root font size */
       }
       li {
-        font-size: 3em; /* Body text will be 14px */
+        font-size: 3rem; /* Body text will be 14px */
       }
     }
