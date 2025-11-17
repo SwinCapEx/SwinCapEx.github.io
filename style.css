@@ -4,7 +4,6 @@ body {
   background-color: #FFFFFF;
   color: #333;
   line-height: 1.6;
-  font-size: 14px;
 }
 
 
@@ -61,17 +60,17 @@ body {
 }
 
 
- @media screen and (max-width: 767px) {
+ @media screen and (max-width: 800px) {
       html {
         font-size: 14px; /* Set a base font size for the root element */
       }
-      body {
-        font-size: 1rem; /* Body text will be 14px */
+      p {
+        font-size: 18px; /* Body text will be 14px */
       }
       h1 {
         font-size: 2.5rem; /* H1 will be 2.5 times the root font size */
       }
-      p {
-        font-size: 18px; /* H1 will be 2.5 times the root font size */
+      li {
+        font-size: 18px; /* Body text will be 14px */
       }
     }
