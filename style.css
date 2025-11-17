@@ -1,109 +1,56 @@
 
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body Styling */
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #FFFFFF;
   color: #333;
-  line-height: 2;
+  line-height: 1.6;
 }
 
-/* Header */
-header {
-  background-color: #DC2E27;
-  color: #FFFFFF;
-  padding: 1rem 2rem;
-  text-align: center;
-}
 
-header h1 {
-  font-size: 2rem;
-  font-weight: bold;
-}
 
-/* Navigation */
-nav {
-  background-color: #18767E;
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem;
-}
-
-nav a {
-  color: #FFFFFF;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Main Content */
-main {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* Section Styling */
-section {
-  margin-bottom: 2rem;
-}
-
-section h2 {
-  color: #DC2E27;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: #FFFFFF;
-  text-align: center;
+/* Unit Description Box */
+.unit-description {
+  border: 2px solid #DC2E27;
+  background-color: #fdf2f2;
   padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-
-  header h1 {
-    font-size: 1.5rem;
-  }
-
-  section h2 {
-    font-size: 1.25rem;
-  }
+.unit-description h2 {
+  color: #DC2E27;
+  margin-bottom: 0.5rem;
 }
 
+.unit-description p {
+  color: #333;
+  font-size: 1rem;
+}
 
+/* Project List */
 .project-list {
   list-style: none;
   padding: 0;
 }
 
 .project-item {
-  border: 1px solid #ccc;
+  border: 2px solid #18767E;
+  border-radius: 6px;
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: #f9f9f9;
+  transition: box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project-title {
   cursor: pointer;
   color: #DC2E27;
   margin: 0;
+  font-weight: bold;
 }
 
 .project-details {
