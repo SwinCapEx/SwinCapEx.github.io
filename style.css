@@ -48,7 +48,7 @@ body {
 
 .project-title {
   cursor: pointer;
-  color: #DC2E27;
+  color: #18767E;
   margin: 0;
   font-weight: bold;
 }
@@ -71,3 +71,22 @@ body {
         font-size: 3rem; /* Body text will be 14px */
       }
     }
+
+
+
+.badge-container {
+  padding: 0.5rem;
+}
+
+.award-badge {
+  display: inline-block;
+  background-color: #DC2E27; /* Badge background */
+  color: #fff; /* Text color */
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 2px solid #DC2E27;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
