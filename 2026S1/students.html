@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Student</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    #results {
+      margin-top: 1rem;
+    }
+
+    .student {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .message {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Find a Student</h1>
+
+  <label for="studentSearch">Search by name:</label>
+  <input
+    type="search"
+    id="studentSearch"
+    placeholder="Enter a student name"
+    autocomplete="off"
+  >
+
+  <div id="results" aria-live="polite">
+    <p class="message">Enter a name to search.</p>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("studentSearch");
+    const results = document.getElementById("results");
+
+    let students = [];
+
+    // Loads students.csv from the same folder as this HTML file.
+    fetch("students.csv")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Could not load students.csv");
+        }
+        return response.text();
+      })
+      .then(csvText => {
+        students = parseCSV(csvText);
+      })
+      .catch(error => {
+        results.innerHTML = `<p class="message">${error.message}</p>`;
+      });
+
+    searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim().toLowerCase();
+
+  if (query.length < 3) {
+    results.innerHTML =
+      '<p class="message">Enter at least three letters to search.</p>';
+    return;
+  }
+
+  const matches = students.filter(student =>
+    student.name.toLowerCase().includes(query)
+  );
+
+  if (matches.length === 0) {
+    results.innerHTML = '<p class="message">No students found.</p>';
+    return;
+  }
+
+  results.innerHTML = matches.map(student => `
+    <div class="student">
+      <strong>${escapeHTML(student.name)}</strong>
+      <div>Team: ${escapeHTML(student.team)}</div>
+      <div>Location: ${escapeHTML(student.location)}</div>
+    </div>
+  `).join("");
+});
+
+    function parseCSV(csv) {
+      const lines = csv.trim().split(/\r?\n/);
+      const headers = lines.shift().split(",").map(header => header.trim());
+
+      return lines
+        .filter(line => line.trim())
+        .map(line => {
+          const values = line.split(",").map(value => value.trim());
+
+          return {
+            name: values[headers.indexOf("name")] || "",
+            team: values[headers.indexOf("team")] || "",
+            location: values[headers.indexOf("location")] || ""
+          };
+        });
+    }
+
+    function escapeHTML(value) {
+      return value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+</body>
+</html>
